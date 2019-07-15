@@ -20,7 +20,7 @@ func (bv *bitVector8) Clear(i, j uint8) {
 	bv.n = math.MaxUint8<<j | ((1<<i)-1)&bv.n
 }
 
-func (bv *bitVector8) Copy() BitVector {
+func (bv *bitVector8) Copy() Handler {
 	return &bitVector8{
 		n: bv.n,
 	}
@@ -65,6 +65,6 @@ func (bv *bitVector8) Set(i uint8, b bool) {
 }
 
 // New8 creates a new 8-bit vector
-func New8() BitVector {
+func New8() Handler {
 	return &bitVector8{}
 }

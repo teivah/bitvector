@@ -20,7 +20,7 @@ func (bv *bitVector64) Clear(i, j uint8) {
 	bv.n = math.MaxUint64<<j | ((1<<i)-1)&bv.n
 }
 
-func (bv *bitVector64) Copy() BitVector {
+func (bv *bitVector64) Copy() Handler {
 	return &bitVector64{
 		n: bv.n,
 	}
@@ -65,6 +65,6 @@ func (bv *bitVector64) Set(i uint8, b bool) {
 }
 
 // New64 creates a new 64-bit vector
-func New64() BitVector {
+func New64() Handler {
 	return &bitVector64{}
 }

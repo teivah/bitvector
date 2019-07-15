@@ -58,10 +58,10 @@ bv.Set(i, false)
 * Get ith bit:
 
 ```go
-b := bv.Get(i)
+b := bv.Get(i) // bool
 ```
 
-* Toggle ith bit:
+* Toggle (flip) ith bit:
 
 ```go
 bv.Toggle(i)
@@ -76,7 +76,7 @@ bv.Clear(i, j)
 * Count the number of bits set to 1:
 
 ```go
-i := bv.Count()
+i := bv.Count() // uint8
 ```
 
 * Reset the internal bit vector:
@@ -88,7 +88,7 @@ bv.Reset()
 * Copy the current bit vector to another data structure:
 
 ```go
-bv2 := bv.Copy()
+bv2 := bv.Copy() // bitvector.Handler
 ```
 
 * Convert the internal bit vector structure to a string:

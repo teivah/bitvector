@@ -20,7 +20,7 @@ func (bv *bitVector32) Clear(i, j uint8) {
 	bv.n = math.MaxUint32<<j | ((1<<i)-1)&bv.n
 }
 
-func (bv *bitVector32) Copy() BitVector {
+func (bv *bitVector32) Copy() Handler {
 	return &bitVector32{
 		n: bv.n,
 	}
@@ -65,6 +65,6 @@ func (bv *bitVector32) Set(i uint8, b bool) {
 }
 
 // New32 creates a new 32-bit vector
-func New32() BitVector {
+func New32() Handler {
 	return &bitVector32{}
 }

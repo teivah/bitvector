@@ -1,14 +1,16 @@
 package bitvector
 
-import "fmt"
+import (
+	"fmt"
+)
 
-// BitVector represents a 8, 16, 32 or 64 bit vector
-type BitVector interface {
+// Handler represents an 8, 16, 32 or 64 bit vector
+type Handler interface {
 	fmt.Stringer
 	// Clear bits from index i (included) to index j (excluded)
 	Clear(i, j uint8)
 	// Copy creates another bit vector structure based on the same length
-	Copy() BitVector
+	Copy() Handler
 	// Count the number of bits set to 1
 	Count() uint8
 	// Toggle ith bit
