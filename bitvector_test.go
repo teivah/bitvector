@@ -30,3 +30,8 @@ func Test_calc(t *testing.T) {
 	assert.Equal(t, 1, bv16)
 	assert.Equal(t, 1, bv8)
 }
+
+func Test_String(t *testing.T) {
+	bv := New(9)
+	assert.Equal(t, "000000000", bv.String())
+}
