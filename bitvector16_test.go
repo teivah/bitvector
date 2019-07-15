@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV16(t *testing.T) {
+func Test_bv16(t *testing.T) {
 	bv := &bitVector16{}
 
 	// Set

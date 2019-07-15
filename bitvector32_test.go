@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV32(t *testing.T) {
+func Test_bv32(t *testing.T) {
 	bv := &bitVector32{}
 
 	// Set

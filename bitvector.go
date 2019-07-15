@@ -22,3 +22,27 @@ type Handler interface {
 	// Toggle ith bit
 	Toggle(i uint8)
 }
+
+func New(len int) Handler {
+	//bv64, bv32, bv16, bv8 := calc(len)
+	return nil
+}
+
+func calc(len int) (bv64, bv32, bv16, bv8 int) {
+	bv64 = len / 64
+	len = len - bv64*64
+
+	bv32 = len / 32
+	len = len - bv32*32
+
+	bv16 = len / 16
+	len = len - bv16*16
+
+	if len != 0 {
+		bv8 = len / 8
+		if len%8 != 0 {
+			bv8++
+		}
+	}
+	return
+}

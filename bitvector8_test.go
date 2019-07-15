@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV8(t *testing.T) {
+func Test_bv8(t *testing.T) {
 	bv := &bitVector8{}
 
 	// Set

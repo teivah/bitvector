@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV64(t *testing.T) {
+func Test_bv64(t *testing.T) {
 	bv := &bitVector64{}
 
 	// Set
