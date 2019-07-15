@@ -2,15 +2,15 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/teivah/bitvector)](https://goreportcard.com/report/github.com/teivah/bitvector)
 
-## Overview
+## Overview
 
 A bit vector is an array data structure that compactly stores bits.
 
-`teivah/bitvector` is based on 4 different data structures:
-* 8-bit vector: based on the Go `uint8` type 
-* 16-bit vector: based on the Go `uint16` type
-* 32-bit vector: based on the Go `uint32` type
-* 64-bit vector: based on the Go `uint64` type
+This library is based on 4 different data structures:
+* 8-bit vector: relies on an internal `uint8`
+* 16-bit vector: relies on an internal `uint16`
+* 32-bit vector: relies on an internal `uint32`
+* 64-bit vector: relies on an internal `uint64`
 
 ## Installation
 
@@ -52,6 +52,7 @@ bv := bitvector.New64()
 
 ```go
 bv.Set(i, true)
+bv.Set(i, false)
 ```
 
 * Get ith bit:
@@ -84,7 +85,7 @@ i := bv.Count()
 bv.Reset()
 ```
 
-* Copy the internal bit vector to another bit vector structure:
+* Copy the current bit vector to another data structure:
 
 ```go
 bv2 := bv.Copy()
