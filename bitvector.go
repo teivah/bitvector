@@ -13,12 +13,12 @@ type Handler interface {
 	Copy() Handler
 	// Count the number of bits set to 1
 	Count() uint8
-	// Toggle ith bit
-	Toggle(i uint8)
 	// Get ith bit
 	Get(i uint8) bool
 	// Reset the bit vector to 0
 	Reset()
 	// Set ith bit
 	Set(i uint8, b bool)
+	// Toggle ith bit
+	Toggle(i uint8)
 }
