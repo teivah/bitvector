@@ -5,33 +5,28 @@ import (
 	"math"
 )
 
-type bitVector32 struct {
-	n uint32
+// Len32 is a 32-bit vector
+type Len32 uint32
+
+func (bv Len32) String() string {
+	return fmt.Sprintf("%b", bv)
 }
 
-func (bv *bitVector32) String() string {
-	return fmt.Sprintf("%b", bv.n)
-}
-
-func (bv *bitVector32) Clear(i, j uint8) {
+// Clear bits from index i (included) to index j (excluded)
+func (bv Len32) Clear(i, j uint8) Len32 {
 	if i > j {
-		return
+		return bv
 	}
-	bv.n = math.MaxUint32<<j | ((1<<i)-1)&bv.n
+	return math.MaxUint32<<j | ((1<<i)-1)&bv
 }
 
-func (bv *bitVector32) Copy() Handler {
-	return &bitVector32{
-		n: bv.n,
-	}
-}
-
-func (bv *bitVector32) Count() uint8 {
+// Count the number of bits set to 1
+func (bv Len32) Count() uint8 {
 	var count uint8
-	var index uint32 = 1
+	var index Len32 = 1
 	var i uint8
 	for {
-		if bv.n&index != 0 {
+		if bv&index != 0 {
 			count++
 		}
 		index <<= 1
@@ -43,28 +38,22 @@ func (bv *bitVector32) Count() uint8 {
 	return count
 }
 
-func (bv *bitVector32) Toggle(i uint8) {
-	bv.n ^= 1 << i
+// Toggle ith bit
+func (bv Len32) Toggle(i uint8) Len32 {
+	return bv ^ 1<<i
 }
 
-func (bv *bitVector32) Get(i uint8) bool {
-	return (bv.n & (1 << i)) != 0
+// Get ith bit
+func (bv Len32) Get(i uint8) bool {
+	return (bv & (1 << i)) != 0
 }
 
-func (bv *bitVector32) Reset() {
-	bv.n = 0
-}
-
-func (bv *bitVector32) Set(i uint8, b bool) {
-	var value uint32
+// Set ith bit
+func (bv Len32) Set(i uint8, b bool) Len32 {
+	var value Len32
 	if b {
 		value = 1
 	}
-	var mask uint32 = ^(1 << i)
-	bv.n = (bv.n & mask) | (value << i)
-}
-
-// New32 creates a new 32-bit vector
-func New32() Handler {
-	return &bitVector32{}
+	var mask Len32 = ^(1 << i)
+	return (bv & mask) | (value << i)
 }

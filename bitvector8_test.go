@@ -7,21 +7,21 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV8(t *testing.T) {
-	bv := &bitVector8{}
+func Test_Len8(t *testing.T) {
+	var bv Len8
 
 	// Set
-	assert.Equal(t, uint8(0), bv.n)
-	bv.Set(0, true)
-	assert.Equal(t, uint8(1), bv.n)
-	bv.Set(7, true)
-	assert.Equal(t, uint8(129), bv.n)
-	bv.Set(8, true)
-	assert.Equal(t, uint8(129), bv.n)
-	bv.Set(6, true)
-	assert.Equal(t, uint8(193), bv.n)
-	bv.Set(6, false)
-	assert.Equal(t, uint8(129), bv.n)
+	assert.Equal(t, Len8(0), bv)
+	bv = bv.Set(0, true)
+	assert.Equal(t, Len8(1), bv)
+	bv = bv.Set(7, true)
+	assert.Equal(t, Len8(129), bv)
+	bv = bv.Set(8, true)
+	assert.Equal(t, Len8(129), bv)
+	bv = bv.Set(6, true)
+	assert.Equal(t, Len8(193), bv)
+	bv = bv.Set(6, false)
+	assert.Equal(t, Len8(129), bv)
 
 	// Count
 	assert.Equal(t, uint8(2), bv.Count())
@@ -31,31 +31,21 @@ func TestBV8(t *testing.T) {
 	assert.True(t, bv.Get(7))
 	assert.False(t, bv.Get(6))
 
-	// Reset
-	bv.Reset()
-	assert.Equal(t, uint8(0), bv.n)
-
 	// Toggle
-	bv.Toggle(7)
-	assert.Equal(t, uint8(128), bv.n)
+	bv = bv.Toggle(7)
+	assert.Equal(t, Len8(1), bv)
 
 	// Clear
-	bv.Reset()
+	bv = 0
 	var i uint8
 	for ; i < 8; i++ {
-		bv.Set(i, true)
+		bv = bv.Set(i, true)
 	}
-	bv.Clear(6, 2)
-	assert.Equal(t, uint8(math.MaxUint8), bv.n)
-	bv.Clear(2, 6)
-	assert.Equal(t, uint8(195), bv.n)
-
-	// Copy
-	assert.Equal(t, uint8(4), bv.Copy().Count())
+	bv = bv.Clear(6, 2)
+	assert.Equal(t, Len8(math.MaxUint8), bv)
+	bv = bv.Clear(2, 6)
+	assert.Equal(t, Len8(195), bv)
 
 	// String
 	assert.Equal(t, "11000011", bv.String())
-
-	// New
-	assert.Equal(t, uint8(0), New8().Count())
 }

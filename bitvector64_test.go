@@ -7,21 +7,21 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestBV64(t *testing.T) {
-	bv := &bitVector64{}
+func Test_Len64(t *testing.T) {
+	var bv Len64
 
 	// Set
-	assert.Equal(t, uint64(0), bv.n)
-	bv.Set(0, true)
-	assert.Equal(t, uint64(1), bv.n)
-	bv.Set(63, true)
-	assert.Equal(t, uint64(9223372036854775809), bv.n)
-	bv.Set(64, true)
-	assert.Equal(t, uint64(9223372036854775809), bv.n)
-	bv.Set(62, true)
-	assert.Equal(t, uint64(13835058055282163713), bv.n)
-	bv.Set(62, false)
-	assert.Equal(t, uint64(9223372036854775809), bv.n)
+	assert.Equal(t, Len64(0), bv)
+	bv = bv.Set(0, true)
+	assert.Equal(t, Len64(1), bv)
+	bv = bv.Set(63, true)
+	assert.Equal(t, Len64(9223372036854775809), bv)
+	bv = bv.Set(64, true)
+	assert.Equal(t, Len64(9223372036854775809), bv)
+	bv = bv.Set(62, true)
+	assert.Equal(t, Len64(13835058055282163713), bv)
+	bv = bv.Set(62, false)
+	assert.Equal(t, Len64(9223372036854775809), bv)
 
 	// Count
 	assert.Equal(t, uint8(2), bv.Count())
@@ -31,31 +31,22 @@ func TestBV64(t *testing.T) {
 	assert.True(t, bv.Get(63))
 	assert.False(t, bv.Get(62))
 
-	// Reset
-	bv.Reset()
-	assert.Equal(t, uint64(0), bv.n)
-
 	// Toggle
-	bv.Toggle(63)
-	assert.Equal(t, uint64(9223372036854775808), bv.n)
+	bv = 0
+	bv = bv.Toggle(63)
+	assert.Equal(t, Len64(9223372036854775808), bv)
 
 	// Clear
-	bv.Reset()
+	bv = 0
 	var i uint8
 	for ; i < 64; i++ {
-		bv.Set(i, true)
+		bv = bv.Set(i, true)
 	}
-	bv.Clear(6, 2)
-	assert.Equal(t, uint64(math.MaxUint64), bv.n)
-	bv.Clear(2, 6)
-	assert.Equal(t, uint64(18446744073709551555), bv.n)
-
-	// Copy
-	assert.Equal(t, uint8(60), bv.Copy().Count())
+	bv = bv.Clear(6, 2)
+	assert.Equal(t, Len64(math.MaxUint64), bv)
+	bv = bv.Clear(2, 6)
+	assert.Equal(t, Len64(18446744073709551555), bv)
 
 	// String
 	assert.Equal(t, "1111111111111111111111111111111111111111111111111111111111000011", bv.String())
-
-	// New
-	assert.Equal(t, uint8(0), New64().Count())
 }

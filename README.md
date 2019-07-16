@@ -6,11 +6,15 @@
 
 A bit vector is an array data structure that compactly stores bits.
 
-This library is based on 4 different data structures:
+This library is statically based on 4 different data structures:
 * 8-bit vector: relies on an internal `uint8`
 * 16-bit vector: relies on an internal `uint16`
 * 32-bit vector: relies on an internal `uint32`
 * 64-bit vector: relies on an internal `uint64`
+
+The rationale compared to being based on a `[]byte` is to save memory if you need a static bit vector structure. Hence, you might be interested in this library for memory-bound computation.
+
+Moreover,    
 
 ## Installation
 
@@ -51,8 +55,8 @@ bv := bitvector.New64()
 * Set ith bit:
 
 ```go
-bv.Set(i, true)
-bv.Set(i, false)
+bv = bv.Set(i, true)
+bv = bv.Set(i, false)
 ```
 
 * Get ith bit:
@@ -64,13 +68,13 @@ b := bv.Get(i) // bool
 * Toggle (flip) ith bit:
 
 ```go
-bv.Toggle(i)
+bv = bv.Toggle(i)
 ```
 
 * Clear bits from index i (included) to index j (excluded):
 
 ```go
-bv.Clear(i, j)
+bv = bv.Clear(i, j)
 ```
 
 * Count the number of bits set to 1:
@@ -79,20 +83,8 @@ bv.Clear(i, j)
 i := bv.Count() // uint8
 ```
 
-* Reset the internal bit vector:
-
-```go
-bv.Reset()
-```
-
-* Copy the current bit vector to another data structure:
-
-```go
-bv2 := bv.Copy() // bitvector.Handler
-```
-
 * Convert the internal bit vector structure to a string:
 
 ```go
-s := bv.String()
+s := bv.String() // string
 ```
