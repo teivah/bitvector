@@ -14,7 +14,7 @@ This library is statically based on 4 different data structures:
 
 The rationale compared to being based on a `[]byte` is to save memory if you need a static bit vector structure. Hence, you might be interested in this library for memory-bound computation.
 
-Moreover, there is a guarantee that each the internal bit vectors will not escape to the heap and remain only at the stack level.
+Moreover, there is a guarantee that the internal bit vectors will not escape to the heap and remain only at the stack level.
 
 ## Installation
 
