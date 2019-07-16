@@ -74,3 +74,35 @@ func (bv Ascii) Set(i uint8, b bool) Ascii {
 		bv[1].Set(i-64, b),
 	}
 }
+
+// And operator
+func (bv Ascii) And(bv2 Ascii) Ascii {
+	return Ascii{
+		bv[0] & bv2[0],
+		bv[1] & bv2[1],
+	}
+}
+
+// Or operator
+func (bv Ascii) Or(bv2 Ascii) Ascii {
+	return Ascii{
+		bv[0] | bv2[0],
+		bv[1] | bv2[1],
+	}
+}
+
+// Xor operator
+func (bv Ascii) Xor(bv2 Ascii) Ascii {
+	return Ascii{
+		bv[0] ^ bv2[0],
+		bv[1] ^ bv2[1],
+	}
+}
+
+// AndNot operator
+func (bv Ascii) AndNot(bv2 Ascii) Ascii {
+	return Ascii{
+		bv[0] &^ bv2[0],
+		bv[1] & bv2[1],
+	}
+}

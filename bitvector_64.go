@@ -57,3 +57,33 @@ func (bv Len64) Set(i uint8, b bool) Len64 {
 	var mask Len64 = ^(1 << i)
 	return (bv & mask) | (value << i)
 }
+
+// And operator
+func (bv Len64) And(bv2 Len64) Len64 {
+	return bv & bv2
+}
+
+// Or operator
+func (bv Len64) Or(bv2 Len64) Len64 {
+	return bv | bv2
+}
+
+// Xor operator
+func (bv Len64) Xor(bv2 Len64) Len64 {
+	return bv ^ bv2
+}
+
+// AndNot operator
+func (bv Len64) AndNot(bv2 Len64) Len64 {
+	return bv &^ bv2
+}
+
+// Push left shifts the bits
+func (bv Len64) Push(i uint8) Len64 {
+	return bv << i
+}
+
+// Pop right shifts the bits
+func (bv Len64) Pop(i uint8) Len64 {
+	return bv >> i
+}

@@ -98,6 +98,41 @@ bv = bv.Clear(i, j)
 i := bv.Count() // uint8
 ```
 
+* And operator:
+
+```go
+bv3 := bv1.And(bv2)
+```
+
+* Or operator:
+
+```go
+bv3 := bv1.Or(bv2)
+```
+
+* Xor operator:
+
+```go
+bv3 := bv1.Xor(bv2)
+```
+
+* AndNot operator:
+
+```go
+bv3 := bv1.AndNot(bv2)
+```
+
+* Push operator (left shift):
+
+```go
+bv = bv.Push(2)
+```
+
+
+```go
+bv = bv.Pop(2)
+```
+
 * Convert the internal bit vector structure to a string:
 
 ```go
