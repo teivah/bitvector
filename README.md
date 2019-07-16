@@ -13,10 +13,10 @@ This library is based on 4 static different data structures:
 * 64-bit vector: relies on an internal `uint64`
 
 The rationale of using a static integer compared to a dynamic `[]byte` is first of all to save memory.
-There is no structure and/or slice overhead in terms of memory.
+There is no structure and/or slice overhead.
 Hence, you might be interested in this library for memory-bound computation.
 
-Also, the operations (get, set etc.) are way more efficient. 
+Also, the operations (get, set, etc.) are way more efficient. 
 A simple benchmark shows that it's about 10 times more efficient than using a byte slice.
 Moreover, there is a guarantee that the internal bit vectors will not escape to the heap and remain only at the stack level.
 
