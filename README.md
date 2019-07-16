@@ -60,7 +60,9 @@ var bv bitvector.Len64
 * 128-bit vector: 
 
 ```go
-bv := bitvector.NewAscii()
+var bv bitvector.Ascii
+// Or to reinitialize the bit vector
+bv = bitvector.NewAscii()
 ```
 
 ### Operations
