@@ -69,7 +69,6 @@ func (bv Ascii) Set(i uint8, b bool) Ascii {
 			bv[1],
 		}
 	}
-
 	return Ascii{
 		bv[0],
 		bv[1].Set(i-64, b),
