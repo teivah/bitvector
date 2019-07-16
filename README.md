@@ -101,25 +101,25 @@ i := bv.Count() // uint8
 * And operator:
 
 ```go
-bv3 := bv1.And(bv2)
+bv := bv1.And(bv2)
 ```
 
 * Or operator:
 
 ```go
-bv3 := bv1.Or(bv2)
+bv := bv1.Or(bv2)
 ```
 
 * Xor operator:
 
 ```go
-bv3 := bv1.Xor(bv2)
+bv := bv1.Xor(bv2)
 ```
 
 * AndNot operator:
 
 ```go
-bv3 := bv1.AndNot(bv2)
+bv := bv1.AndNot(bv2)
 ```
 
 * Push operator (left shift):
