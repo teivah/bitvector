@@ -128,6 +128,7 @@ bv := bv1.AndNot(bv2)
 bv = bv.Push(2)
 ```
 
+* Pop operator (right shift):
 
 ```go
 bv = bv.Pop(2)
