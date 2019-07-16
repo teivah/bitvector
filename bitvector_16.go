@@ -17,7 +17,7 @@ func (bv Len16) Clear(i, j uint8) Len16 {
 	if i > j {
 		return bv
 	}
-	return math.MaxUint16<<j | ((1<<i)-1)&bv
+	return (math.MaxUint16<<j | ((1 << i) - 1)) & bv
 }
 
 // Count the number of bits set to 1

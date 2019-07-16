@@ -1,6 +1,7 @@
-package bitvector
+package bitvector_test
 
 import (
+	"github.com/teivah/bitvector"
 	"math"
 	"testing"
 
@@ -8,20 +9,20 @@ import (
 )
 
 func Test_Len8(t *testing.T) {
-	var bv Len8
+	var bv bitvector.Len8
 
 	// Set
-	assert.Equal(t, Len8(0), bv)
+	assert.Equal(t, bitvector.Len8(0), bv)
 	bv = bv.Set(0, true)
-	assert.Equal(t, Len8(1), bv)
+	assert.Equal(t, bitvector.Len8(1), bv)
 	bv = bv.Set(7, true)
-	assert.Equal(t, Len8(129), bv)
+	assert.Equal(t, bitvector.Len8(129), bv)
 	bv = bv.Set(8, true)
-	assert.Equal(t, Len8(129), bv)
+	assert.Equal(t, bitvector.Len8(129), bv)
 	bv = bv.Set(6, true)
-	assert.Equal(t, Len8(193), bv)
+	assert.Equal(t, bitvector.Len8(193), bv)
 	bv = bv.Set(6, false)
-	assert.Equal(t, Len8(129), bv)
+	assert.Equal(t, bitvector.Len8(129), bv)
 
 	// Count
 	assert.Equal(t, uint8(2), bv.Count())
@@ -33,7 +34,7 @@ func Test_Len8(t *testing.T) {
 
 	// Toggle
 	bv = bv.Toggle(7)
-	assert.Equal(t, Len8(1), bv)
+	assert.Equal(t, bitvector.Len8(1), bv)
 
 	// Clear
 	bv = 0
@@ -42,9 +43,9 @@ func Test_Len8(t *testing.T) {
 		bv = bv.Set(i, true)
 	}
 	bv = bv.Clear(6, 2)
-	assert.Equal(t, Len8(math.MaxUint8), bv)
+	assert.Equal(t, bitvector.Len8(math.MaxUint8), bv)
 	bv = bv.Clear(2, 6)
-	assert.Equal(t, Len8(195), bv)
+	assert.Equal(t, bitvector.Len8(195), bv)
 
 	// String
 	assert.Equal(t, "11000011", bv.String())
